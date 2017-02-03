@@ -1,1 +1,1 @@
-test
+Prototype game built in Unity for IST 446
