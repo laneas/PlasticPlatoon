@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     private Rigidbody rig;
     private Vector3 v;
     private Vector3 r;
+    private Vector3 z;
 
     void Start()
     {
@@ -18,10 +19,12 @@ public class CameraMovement : MonoBehaviour
         getInput();
         rig.transform.Translate(v);
         rig.transform.Rotate(r);
+        rig.transform.Translate(z);
     }
 
     void getInput()
     {
+        //Cardinal Movement
         if (Input.GetKey(KeyCode.A))
         {
             v = new Vector3(1 * speed, 0 * speed, 1 * speed);//Vector3.left;
@@ -43,17 +46,23 @@ public class CameraMovement : MonoBehaviour
             v = Vector3.zero;
         }
 
+        //Camera Rotation
         if (Input.GetKey(KeyCode.Q))
         {
-            r = Vector3.up;
+            r = new Vector3(0, 1 * 3, 0);//Vector3.up;
         }
         else if (Input.GetKey(KeyCode.E))
         {
-            r = Vector3.down;
+            r = new Vector3(0, -1 * 3, 0);//Vector3.down;
         }
         else
         {
             r = Vector3.zero;
         }
+
+        //Camera Zoom
+
+        z = new Vector3(0, Input.GetAxis("Mouse ScrollWheel") * -2, 0);
+        
     }
 }

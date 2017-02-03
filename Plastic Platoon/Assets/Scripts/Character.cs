@@ -15,17 +15,13 @@ public class Character : MonoBehaviour
     public int damageUpper;
     public int damageLower;
     public int cost;
-    private GameObject model;
+    public bool isSelected;
+    private GameObject hitBox;
 
 	void Start ()
     {
-
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
+        isSelected = false;
+        hitBox = GameObject.Find("CharacterBox");
 	}
 
     void levelUp()

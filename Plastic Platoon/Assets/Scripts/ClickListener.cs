@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ClickListener : MonoBehaviour {
 
-    public GameObject leftSelected;
-    public GameObject rightSelected;
+    public GameObject left;
+    public GameObject right;
 
     void Start ()
     {
@@ -22,29 +22,23 @@ public class ClickListener : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit, 100))
             {
-                leftSelected = hit.transform.gameObject;
-                if (leftSelected.tag.Equals("Tile"))
-                {
-                    leftSelected = null;
-                }
-                Debug.Log("Left Selected: "+hit.transform.gameObject.name);
+                left = hit.transform.gameObject;
             }
         }
-
-        if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100))
             {
-                rightSelected = hit.transform.gameObject;
-                if (!rightSelected.tag.Equals("Tile"))
-                {
-                    rightSelected = null;
-                }
-                Debug.Log("Right Selected: "+hit.transform.gameObject.tag);
+                right = hit.transform.gameObject;
             }
+        }
+        else
+        {
+            left = null;
+            right = null;
         }
 	}
 }
