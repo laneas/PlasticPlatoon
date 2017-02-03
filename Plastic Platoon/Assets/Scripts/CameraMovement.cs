@@ -61,8 +61,17 @@ public class CameraMovement : MonoBehaviour
         }
 
         //Camera Zoom
-
-        z = new Vector3(0, Input.GetAxis("Mouse ScrollWheel") * -2, 0);
-        
+        if (Input.GetKey(KeyCode.R))
+        {
+            z = new Vector3(0, -.5f, 0);
+        }
+        else if (Input.GetKey(KeyCode.F))
+        {
+            z = new Vector3(0, .5f, 0);
+        }
+        else
+        {
+            z = new Vector3(0, Input.GetAxis("Mouse ScrollWheel") * -2, 0);
+        }
     }
 }

@@ -18,6 +18,8 @@ public class ObjectManager : MonoBehaviour {
             for (int j = -1 * range; j < range + 1; j++)
             {
                 GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                MeshCollider c = plane.GetComponent<MeshCollider>();
+                Object.Destroy(c);
                 Vector3 scale = plane.transform.localScale;
                 scale.x = .08f;
                 scale.z = .08f;

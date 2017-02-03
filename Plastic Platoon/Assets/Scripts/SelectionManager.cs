@@ -50,5 +50,10 @@ public class SelectionManager : MonoBehaviour {
                 om.showMovement(leftSelection);
             }
         }
+
+        if (leftSelection.tag.Equals("Character") && rightSelection.tag.Equals("Tile")) // Later check for if turn, etc
+        {
+            om.move(leftSelection, rightSelection);
+        }
     }
 }

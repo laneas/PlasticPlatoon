@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plastic Platoon.CSharp", "Plastic Platoon.CSharp.csproj", "{2EBB2B7F-B660-FB01-6E52-54742A5E9470}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plastic Platoon", "Plastic Platoon.csproj", "{4B2BBAB2-E9A5-47C9-D1DC-7BA2762BA4C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2EBB2B7F-B660-FB01-6E52-54742A5E9470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EBB2B7F-B660-FB01-6E52-54742A5E9470}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EBB2B7F-B660-FB01-6E52-54742A5E9470}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EBB2B7F-B660-FB01-6E52-54742A5E9470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B2BBAB2-E9A5-47C9-D1DC-7BA2762BA4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B2BBAB2-E9A5-47C9-D1DC-7BA2762BA4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B2BBAB2-E9A5-47C9-D1DC-7BA2762BA4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B2BBAB2-E9A5-47C9-D1DC-7BA2762BA4C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
