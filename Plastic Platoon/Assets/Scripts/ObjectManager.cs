@@ -4,31 +4,79 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    Material[] materials;
+	void Start ()
+    {
+        materials = new Material[5];
+        materials[0] = (Material)Resources.Load("moveInd", typeof(Material));  //Move indication color
+        materials[1] = (Material)Resources.Load("runInd", typeof(Material));   //Run indication color
+        materials[2] = (Material)Resources.Load("rangeInd", typeof(Material)); //Range indication color
+    }
 
-    public void showMovement(GameObject character)
+    public GameObject[] showMovement(GameObject character)
     {
         Character stats = character.GetComponent<Character>();
         int range = stats.move;
+        int counter = 0;
+        GameObject[] planes = new GameObject[(2 * range + 1) * (2 * range + 1)];
         for (int i = -1 * range; i < range + 1; i++)
         {
             for (int j = -1 * range; j < range + 1; j++)
             {
                 GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 MeshCollider c = plane.GetComponent<MeshCollider>();
-                Object.Destroy(c);
+                Destroy(c);
                 Vector3 scale = plane.transform.localScale;
                 scale.x = .08f;
                 scale.z = .08f;
                 plane.transform.localScale = scale;
-                float xp =  i - character.transform.position.x;
-                float zp =  j - character.transform.position.z;
-                plane.transform.Translate(xp, 1, zp);    
+                float xp = -1 * (i - character.transform.position.x);
+                float zp = -1 * (j - character.transform.position.z);
+                plane.transform.Translate(xp, 1, zp);
+                if (Mathf.Abs(plane.transform.position.x - character.transform.position.x) > Mathf.Floor(range / 2) || Mathf.Abs(plane.transform.position.z - character.transform.position.z) > Mathf.Floor(range / 2))
+                {
+                    plane.GetComponent<Renderer>().material = materials[1];
+                }
+                else
+                {
+                    plane.GetComponent<Renderer>().material = materials[0];
+                }
+                planes[counter] = plane;
+                counter++;
             }
         }
+
+        return planes;
+    }
+
+    public GameObject[] showRange(GameObject character)
+    {
+        Character stats = character.GetComponent<Character>();
+        int range = stats.range;
+        int counter = 0;
+        GameObject[] planes = new GameObject[(2 * range + 1) * (2 * range + 1)];
+        for (int i = -1 * range; i < range + 1; i++)
+        {
+            for (int j = -1 * range; j < range + 1; j++)
+            {
+                GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                MeshCollider c = plane.GetComponent<MeshCollider>();
+                Destroy(c);
+                Vector3 scale = plane.transform.localScale;
+                scale.x = .02f;
+                scale.z = .02f;
+                plane.transform.localScale = scale;
+                float xp = -1 * (i - character.transform.position.x);
+                float zp = -1 * (j - character.transform.position.z);
+                plane.transform.Translate(xp, 1.01f, zp);
+                plane.GetComponent<Renderer>().material = materials[2];
+                
+                planes[counter] = plane;
+                counter++;
+            }
+        }
+
+        return planes;
     }
 
     public void move(GameObject character, GameObject tile)

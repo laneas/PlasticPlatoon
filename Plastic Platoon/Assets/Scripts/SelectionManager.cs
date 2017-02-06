@@ -10,6 +10,8 @@ public class SelectionManager : MonoBehaviour {
     bool rightSelectionChanged;
     ClickListener cl;
     ObjectManager om;
+    GameObject[] selectionRange;
+    GameObject[] rangeRange;
 	void Start ()
     {
         GameObject camera = GameObject.Find("Main Camera");
@@ -43,17 +45,53 @@ public class SelectionManager : MonoBehaviour {
             rightSelectionChanged = false;
         }
 
+        //Character Selection
         if (leftSelection != null && leftSelection.tag.Equals("Character"))
         {
             if (leftSelectionChanged)
             {
-                om.showMovement(leftSelection);
+                clearSelections();
+                selectionRange = om.showMovement(leftSelection);
+                rangeRange = om.showRange(leftSelection);
             }
         }
 
-        if (leftSelection.tag.Equals("Character") && rightSelection.tag.Equals("Tile")) // Later check for if turn, etc
+        //Move
+        if (leftSelection != null && rightSelection != null && leftSelection.tag.Equals("Character") && rightSelection.tag.Equals("Tile")) // Later check for if turn, etc
         {
             om.move(leftSelection, rightSelection);
+            clearSelections();
+            leftSelection = null;
+            rightSelection = null;
+        }
+
+        //Attack
+        if (leftSelection != null && rightSelection != null && leftSelection.tag.Equals("Character") && rightSelection.tag.Equals("Character"))
+        {
+            Character character = rightSelection.GetComponent<Character>();
+            character.takeAttack(leftSelection);
+            clearSelections();
+            leftSelection = null;
+            rightSelection = null;
+        }
+    }
+
+    void clearSelections()
+    {
+        if (selectionRange != null)
+        {
+            foreach (GameObject plane in selectionRange)
+            {
+                Destroy(plane);
+            }
+        }
+
+        if (rangeRange != null)
+        {
+            foreach (GameObject plane in rangeRange)
+            {
+                Destroy(plane);
+            }
         }
     }
 }
