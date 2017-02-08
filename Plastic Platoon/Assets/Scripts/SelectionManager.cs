@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour {
 
-    GameObject leftSelection;
+    public GameObject leftSelection;
     bool leftSelectionChanged;
-    GameObject rightSelection;
+    public GameObject rightSelection;
     bool rightSelectionChanged;
     ClickListener cl;
     ObjectManager om;
@@ -74,6 +74,21 @@ public class SelectionManager : MonoBehaviour {
             leftSelection = null;
             rightSelection = null;
         }
+
+        //Spawn
+        
+            
+       if (Input.GetKey(KeyCode.B))
+       {
+            Debug.Log("B");
+           if (leftSelection != null && leftSelection.tag.Equals("Spawn"))
+           {
+                Debug.Log("Base Selected");
+                BaseListener playerBase = leftSelection.GetComponent<BaseListener>();
+                playerBase.spawnCharacter("blah");
+            }
+        }
+        
     }
 
     void clearSelections()

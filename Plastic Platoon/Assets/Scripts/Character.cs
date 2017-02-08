@@ -58,6 +58,7 @@ public class Character : MonoBehaviour
         accuracy = accuracy + 5;
         damageLower = damageLower + 1;
         damageUpper = damageUpper + 2;
+        crit = crit + 5;
         if (level == 1) { rank = "I"; }
         else if (level == 2) { rank = "II"; }
         else if (level == 3) { rank = "III"; }
